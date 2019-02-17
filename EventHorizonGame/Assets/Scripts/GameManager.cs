@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class GameManager : MonoBehaviour
 {
@@ -8,6 +9,11 @@ public class GameManager : MonoBehaviour
     public List<Vector3> waypointList;
     public GameObject alien;
     public Transform spawnPoint;
+    private Collider cardTrigger;    
+    public GameObject controlRoom;
+    
+
+    
 
     private void Awake()
     {
@@ -20,6 +26,14 @@ public class GameManager : MonoBehaviour
     }
 
 
+    
+    private void TurnOnNavMesh(bool gotCard)
+    {
+        if (gotCard)
+        {
+            controlRoom.GetComponent<NavMeshObstacle>().enabled = false;
+        }
+    }
 
     // Start is called before the first frame update
     void Start()

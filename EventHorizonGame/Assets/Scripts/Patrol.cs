@@ -62,8 +62,10 @@ public class Patrol : MonoBehaviour
         
         Vector3 endPos = new Vector3(currentLink.endPos.x, navMesh.transform.position.y, currentLink.endPos.z);
 
-        
+        var endRotation = Quaternion.LookRotation(endPos - transform.position);
+        transform.rotation = Quaternion.Slerp(transform.rotation, endRotation, (navMesh.speed / 1.5f) * Time.deltaTime);
         transform.position = Vector3.MoveTowards(navMesh.transform.position, endPos, (navMesh.speed /1.5f) * Time.deltaTime);
+        
         
         if (navMesh.transform.position == endPos)
         {

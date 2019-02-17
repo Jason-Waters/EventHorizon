@@ -178,8 +178,6 @@ GameObject:
   - component: {fileID: 3876390590241499275}
   - component: {fileID: 8193096833862397920}
   - component: {fileID: 7830195223709765171}
-  - component: {fileID: 9015198710977778749}
-  - component: {fileID: 7190567114335030891}
   m_Layer: 0
   m_Name: Window
   m_TagString: Untagged
@@ -242,29 +240,3 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.05841799, y: 0.09853997, z: 0.019426165}
   m_Center: {x: 0.03012509, y: 0.042397242, z: -0.25533527}
---- !u!65 &9015198710977778749
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5406979058773904764}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.017767062, y: 0.08908351, z: 0.028543962}
-  m_Center: {x: 0.02985715, y: 0.042167813, z: 0.24077097}
---- !u!65 &7190567114335030891
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5406979058773904764}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.017767062, y: 0.08908351, z: 0.024869584}
-  m_Center: {x: 0.02985715, y: 0.042167813, z: -0.23947906}

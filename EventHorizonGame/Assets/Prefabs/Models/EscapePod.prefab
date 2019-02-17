@@ -177,9 +177,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4006833685215458526}
-  - component: {fileID: 5374092893803085137}
-  - component: {fileID: 3876077654100566435}
-  - component: {fileID: 1665854607836333948}
   m_Layer: 0
   m_Name: EscapePod
   m_TagString: Untagged
@@ -203,42 +200,3 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &5374092893803085137
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4006833685215160574}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.16459405, y: 0.090419695, z: 0.025147619}
-  m_Center: {x: 0.07932767, y: 0.03841711, z: 0.028381884}
---- !u!65 &3876077654100566435
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4006833685215160574}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.16459405, y: 0.090419695, z: 0.027342487}
-  m_Center: {x: 0.07932767, y: 0.03841711, z: -0.029412625}
---- !u!65 &1665854607836333948
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4006833685215160574}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.018346207, y: 0.18850559, z: 0.08957247}
-  m_Center: {x: 0.15438746, y: 0.06369702, z: -0.0013144725}

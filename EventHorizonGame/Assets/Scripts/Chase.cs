@@ -9,6 +9,8 @@ public class Chase : MonoBehaviour
     private NavMeshAgent agent;
     private GameObject player;
     private GameObject g_manager;
+    private bool traversingLink;
+    private OffMeshLinkData currentLink;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,7 +27,7 @@ public class Chase : MonoBehaviour
     {
         if (sawEnemy == true) {
             agent.SetDestination(player.transform.position);
-                }
+        }
     }
     
 
@@ -39,8 +41,35 @@ public class Chase : MonoBehaviour
 
     private void AlienStats()
     {
-        agent.speed = 6;
+        agent.speed = 8;
         agent.acceleration = 10;
+    }
+    private void OffMesh()
+    {
+        if (!traversingLink)
+        {
+            Debug.Log("Inside OffMeshLink");
+
+            currentLink = agent.currentOffMeshLinkData;
+            traversingLink = true;
+
+        }
+
+
+
+        Vector3 endPos = new Vector3(currentLink.endPos.x, agent.transform.position.y, currentLink.endPos.z);
+
+        var endRotation = Quaternion.LookRotation(endPos - transform.position);
+        transform.rotation = Quaternion.Slerp(transform.rotation, endRotation, (agent.speed * 2) * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(agent.transform.position, endPos, (agent.speed / 1.5f) * Time.deltaTime);
+
+
+        if (agent.transform.position == endPos)
+        {
+            traversingLink = false;
+            agent.CompleteOffMeshLink();
+            agent.isStopped = false;
+        }
     }
 
 
@@ -48,6 +77,12 @@ public class Chase : MonoBehaviour
     void Update()
     {
         Move();
+
+        if (agent.isOnOffMeshLink)
+        {
+            
+            OffMesh();
+        }
 
         CheckDistance();
         

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TerminalScript : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class TerminalScript : MonoBehaviour
     private GameObject[] escapeDoor;
     private int count = 0;
     private GameObject g_manager;
+    public GameObject interactText;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,8 +38,10 @@ public class TerminalScript : MonoBehaviour
     {
         if(inTrigger == true)
         {
+            interactText.SetActive(true);
             if (Input.GetButtonDown("Interact"))
             {
+                interactText.SetActive(false);
                 gameObject.GetComponent<AudioSource>().Play();
                 for (int i = 0; i < terminalDoor.Length; i++)
                 {
@@ -54,6 +59,7 @@ public class TerminalScript : MonoBehaviour
 
             if (gotKey == true && Input.GetButtonDown("Interact"))
             {
+                interactText.SetActive(false);
                 gameObject.GetComponent<AudioSource>().Play();
                 for (int i = 0; i < escapeDoor.Length; i++)
                 {
@@ -70,6 +76,7 @@ public class TerminalScript : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            interactText.SetActive(false);
             inTrigger = false;
             
         }

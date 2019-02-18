@@ -8,6 +8,7 @@ public class CardScript : MonoBehaviour
     private GameObject g_manager;
     private bool gotCard = false;
     private bool inTrigger;
+    public GameObject interactText;
     private void Start()
     {
         g_manager = GameObject.FindGameObjectWithTag("GameController");

@@ -50,7 +50,7 @@ public class Gun : MonoBehaviour
     {
         gunAudio.Play();
         laserLine.enabled = true;
-        yield return new WaitForSeconds(.02f);
+        yield return new WaitForSeconds(.07f);
         laserLine.enabled = false;
 
     }

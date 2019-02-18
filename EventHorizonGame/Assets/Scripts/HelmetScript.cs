@@ -4,25 +4,31 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class HelmetScript : MonoBehaviour
-{
-    private Vector3 startLocation;
-    private Vector3 endLocation;
-    public float closeSpeed;
+{        
+    public Animator helmAnim;
+    public Animator hudAnim;
+    public GameObject hud;
+    
 
     // Start is called before the first frame update
     void Start()
     {
-        startLocation = gameObject.GetComponent<RectTransform>().anchoredPosition3D;
-        Debug.Log(startLocation);
-        
-        endLocation = startLocation;
-        endLocation.y = -1000;
-        Debug.Log(endLocation);
+        helmAnim.SetBool("playClose", true);     
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
+    private void FixedUpdate()
     {
-        Vector3.MoveTowards(startLocation, endLocation, closeSpeed*Time.deltaTime);
+        if (helmAnim.GetBool("isClosed") && !helmAnim.GetBool("playClose"))
+        {
+            hudAnim.SetBool("helmClosed", true);
+        }
+
     }
+
+
+
+
+
+
+
 }

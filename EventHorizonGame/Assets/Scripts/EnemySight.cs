@@ -9,18 +9,20 @@ public class EnemySight : MonoBehaviour
     public float sightDist = 10f;
     private int setState = 2;
     private Collider player;
+    public GameObject g_manager;
     // Start is called before the first frame update
     void Start()
     {
         heightMultiplier = 0;
         player = GameObject.FindWithTag("Player").GetComponent<Collider>();
+        
     }
 
 
     void Investigate()
     {
         timer += Time.deltaTime;
-        RaycastHit hit;
+        
 
         //Front LOS
         Debug.DrawRay(transform.position + Vector3.up * heightMultiplier, transform.forward * sightDist, Color.green);
@@ -28,36 +30,138 @@ public class EnemySight : MonoBehaviour
         Debug.DrawRay(transform.position + Vector3.up * heightMultiplier, (transform.forward + transform.right/2).normalized * sightDist * .75f, Color.green);
         Debug.DrawRay(transform.position + Vector3.up * heightMultiplier, (transform.forward - transform.right).normalized * sightDist *.5f, Color.green);
         Debug.DrawRay(transform.position + Vector3.up * heightMultiplier, (transform.forward - transform.right/2).normalized * sightDist * .75f, Color.green);
+        Debug.DrawRay(transform.position + Vector3.up * heightMultiplier, (transform.forward - transform.right / 4).normalized * sightDist * .75f, Color.green);
+        Debug.DrawRay(transform.position + Vector3.up * heightMultiplier, (transform.forward + transform.right / 4).normalized * sightDist * .75f, Color.green);
 
-        //Behind LOS
-        Debug.DrawRay(transform.position + Vector3.up * heightMultiplier, -transform.forward * sightDist * .25f, Color.blue);
-        Debug.DrawRay(transform.position + Vector3.up * heightMultiplier, (-transform.forward + transform.right).normalized * sightDist * .25f, Color.blue);
-        Debug.DrawRay(transform.position + Vector3.up * heightMultiplier, (-transform.forward + transform.right / 2).normalized * sightDist * .25f, Color.blue);
-        Debug.DrawRay(transform.position + Vector3.up * heightMultiplier, (-transform.forward - transform.right).normalized * sightDist * .25f, Color.blue);
-        Debug.DrawRay(transform.position + Vector3.up * heightMultiplier, (-transform.forward - transform.right / 2).normalized * sightDist * .25f, Color.blue);
 
+        //Back LOS
+        Debug.DrawRay(transform.position + Vector3.up * heightMultiplier, transform.forward * sightDist, Color.green);
+        Debug.DrawRay(transform.position + Vector3.up * heightMultiplier, (-transform.forward + transform.right).normalized * sightDist * .5f, Color.blue);
+        Debug.DrawRay(transform.position + Vector3.up * heightMultiplier, (-transform.forward + transform.right / 2).normalized * sightDist * .5f, Color.blue);
+        Debug.DrawRay(transform.position + Vector3.up * heightMultiplier, (-transform.forward - transform.right).normalized * sightDist * .5f, Color.blue);
+        Debug.DrawRay(transform.position + Vector3.up * heightMultiplier, (-transform.forward - transform.right / 2).normalized * sightDist * .5f, Color.blue);
+        Debug.DrawRay(transform.position + Vector3.up * heightMultiplier, (-transform.forward - transform.right / 4).normalized * sightDist * .5f, Color.blue);
+        Debug.DrawRay(transform.position + Vector3.up * heightMultiplier, (-transform.forward + transform.right / 4).normalized * sightDist * .5f, Color.blue);
+
+
+
+
+        DrawFrontRays();
+        DrawBackRays();
+
+
+
+
+
+    }
+
+    private void DrawBackRays()
+    {
+        RaycastHit hit;
+
+        if (Physics.Raycast(transform.position + Vector3.up * heightMultiplier, -transform.forward, out hit, sightDist * .5f))
+        {
+            if (hit.collider.CompareTag("Player"))
+            {
+                Debug.Log("hit player");
+                gameObject.GetComponent<AlienController>().UpdateState(setState);
+            }
+        }
+
+        if (Physics.Raycast(transform.position + Vector3.up * heightMultiplier, (-transform.forward + (transform.right / 4)).normalized, out hit, sightDist * .5f))
+        {
+            if (hit.collider.CompareTag("Player"))
+            {
+                Debug.Log("hit player");
+                gameObject.GetComponent<AlienController>().UpdateState(setState);
+            }
+        }
+
+        if (Physics.Raycast(transform.position + Vector3.up * heightMultiplier, (-transform.forward + transform.right).normalized, out hit, sightDist * .5f))
+        {
+            if (hit.collider.CompareTag("Player"))
+            {
+                Debug.Log("hit player");
+                gameObject.GetComponent<AlienController>().UpdateState(setState);
+            }
+        }
+
+        if (Physics.Raycast(transform.position + Vector3.up * heightMultiplier, (-transform.forward + (transform.right / 2)).normalized, out hit, sightDist * .5f))
+        {
+            if (hit.collider.CompareTag("Player"))
+            {
+                Debug.Log("hit player");
+                gameObject.GetComponent<AlienController>().UpdateState(setState);
+            }
+        }
+
+        if (Physics.Raycast(transform.position + Vector3.up * heightMultiplier, (-transform.forward - transform.right).normalized, out hit, sightDist * .5f))
+        {
+            if (hit.collider.CompareTag("Player"))
+            {
+                Debug.Log("hit player");
+                gameObject.GetComponent<AlienController>().UpdateState(setState);
+            }
+        }
+
+        if (Physics.Raycast(transform.position + Vector3.up * heightMultiplier, (-transform.forward - (transform.right / 2)).normalized, out hit, sightDist * .5f))
+        {
+            if (hit.collider.CompareTag("Player"))
+            {
+                Debug.Log("hit player");
+                gameObject.GetComponent<AlienController>().UpdateState(setState);
+            }
+        }
+
+        if (Physics.Raycast(transform.position + Vector3.up * heightMultiplier, (-transform.forward - (transform.right / 4)).normalized, out hit, sightDist * .5f))
+        {
+            if (hit.collider.CompareTag("Player"))
+            {
+                Debug.Log("hit player");
+                gameObject.GetComponent<AlienController>().UpdateState(setState);
+            }
+        }
+
+
+    }
+
+    private void DrawFrontRays()
+    {
+        RaycastHit hit;
         //Front LOS
         if (Physics.Raycast(transform.position + Vector3.up * heightMultiplier, transform.forward, out hit, sightDist))
         {
             if (hit.collider.CompareTag("Player"))
             {
-                GameObject.FindGameObjectWithTag("GameController").GetComponent<AlienController>().UpdateState(setState);
+                Debug.Log("hit player");
+                gameObject.GetComponent<AlienController>().UpdateState(setState);
             }
         }
 
-        if (Physics.Raycast(transform.position + Vector3.up * heightMultiplier, (transform.forward + transform.right).normalized, out hit, sightDist *.5f))
+        if (Physics.Raycast(transform.position + Vector3.up * heightMultiplier, (transform.forward + (transform.right / 4)).normalized, out hit, sightDist * .75f))
         {
             if (hit.collider.CompareTag("Player"))
             {
-                GameObject.FindGameObjectWithTag("GameController").GetComponent<AlienController>().UpdateState(setState);
+                Debug.Log("hit player");
+                gameObject.GetComponent<AlienController>().UpdateState(setState);
             }
         }
 
-        if (Physics.Raycast(transform.position + Vector3.up * heightMultiplier, (transform.forward + (transform.right/2)).normalized, out hit, sightDist * .75f))
+        if (Physics.Raycast(transform.position + Vector3.up * heightMultiplier, (transform.forward + transform.right).normalized, out hit, sightDist * .5f))
         {
             if (hit.collider.CompareTag("Player"))
             {
-                GameObject.FindGameObjectWithTag("GameController").GetComponent<AlienController>().UpdateState(setState);
+                Debug.Log("hit player");
+                gameObject.GetComponent<AlienController>().UpdateState(setState);
+            }
+        }
+
+        if (Physics.Raycast(transform.position + Vector3.up * heightMultiplier, (transform.forward + (transform.right / 2)).normalized, out hit, sightDist * .75f))
+        {
+            if (hit.collider.CompareTag("Player"))
+            {
+                Debug.Log("hit player");
+                gameObject.GetComponent<AlienController>().UpdateState(setState);
             }
         }
 
@@ -65,58 +169,26 @@ public class EnemySight : MonoBehaviour
         {
             if (hit.collider.CompareTag("Player"))
             {
-                GameObject.FindGameObjectWithTag("GameController").GetComponent<AlienController>().UpdateState(setState);
+                Debug.Log("hit player");
+                gameObject.GetComponent<AlienController>().UpdateState(setState);
             }
         }
 
-        if (Physics.Raycast(transform.position + Vector3.up * heightMultiplier, (transform.forward - (transform.right/2)).normalized, out hit, sightDist * .75f))
+        if (Physics.Raycast(transform.position + Vector3.up * heightMultiplier, (transform.forward - (transform.right / 2)).normalized, out hit, sightDist * .75f))
         {
             if (hit.collider.CompareTag("Player"))
             {
-                GameObject.FindGameObjectWithTag("GameController").GetComponent<AlienController>().UpdateState(setState);
+                Debug.Log("hit player");
+                gameObject.GetComponent<AlienController>().UpdateState(setState);
             }
         }
 
-
-        //Behind LOS
-
-        if (Physics.Raycast(transform.position + Vector3.up * heightMultiplier, -transform.forward, out hit, sightDist * .25f))
+        if (Physics.Raycast(transform.position + Vector3.up * heightMultiplier, (transform.forward - (transform.right / 4)).normalized, out hit, sightDist * .75f))
         {
             if (hit.collider.CompareTag("Player"))
             {
-                GameObject.FindGameObjectWithTag("GameController").GetComponent<AlienController>().UpdateState(setState);
-            }
-        }
-
-        if (Physics.Raycast(transform.position + Vector3.up * heightMultiplier, (-transform.forward + transform.right).normalized, out hit, sightDist * .25f))
-        {
-            if (hit.collider.CompareTag("Player"))
-            {
-                GameObject.FindGameObjectWithTag("GameController").GetComponent<AlienController>().UpdateState(setState);
-            }
-        }
-
-        if (Physics.Raycast(transform.position + Vector3.up * heightMultiplier, (-transform.forward + (transform.right / 2)).normalized, out hit, sightDist * .25f))
-        {
-            if (hit.collider.CompareTag("Player"))
-            {
-                GameObject.FindGameObjectWithTag("GameController").GetComponent<AlienController>().UpdateState(setState);
-            }
-        }
-
-        if (Physics.Raycast(transform.position + Vector3.up * heightMultiplier, (-transform.forward - transform.right).normalized, out hit, sightDist * .25f))
-        {
-            if (hit.collider.CompareTag("Player"))
-            {
-                GameObject.FindGameObjectWithTag("GameController").GetComponent<AlienController>().UpdateState(setState);
-            }
-        }
-
-        if (Physics.Raycast(transform.position + Vector3.up * heightMultiplier, (-transform.forward - (transform.right / 2)).normalized, out hit, sightDist * .25f))
-        {
-            if (hit.collider.CompareTag("Player"))
-            {
-                GameObject.FindGameObjectWithTag("GameController").GetComponent<AlienController>().UpdateState(setState);
+                Debug.Log("hit player");
+                gameObject.GetComponent<AlienController>().UpdateState(setState);
             }
         }
 

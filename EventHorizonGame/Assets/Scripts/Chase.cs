@@ -5,45 +5,51 @@ using UnityEngine.AI;
 
 public class Chase : MonoBehaviour
 {
+    private bool sawEnemy;
+    private NavMeshAgent agent;
     private GameObject player;
-    private NavMeshAgent myNavMesh;
-    AlienController state;
-    public float lostDist = 15f;
-
-    private void Awake()
-    {
-        myNavMesh = gameObject.GetComponent<NavMeshAgent>();
-        player = GameObject.FindWithTag("Player");
-    }
-
+    private GameObject g_manager;
+    // Start is called before the first frame update
     void Start()
     {
+        g_manager = GameObject.FindGameObjectWithTag("GameController");
+        agent = gameObject.GetComponent<NavMeshAgent>();
+        player = GameObject.FindGameObjectWithTag("Player");
+        sawEnemy = true;
+
         AlienStats();
+    }
 
-        Move();
 
+    private void Move()
+    {
+        if (sawEnemy == true) {
+            agent.SetDestination(player.transform.position);
+                }
+    }
+    
+
+    private void CheckDistance()
+    {
+        if (Vector3.Distance(agent.transform.position, player.transform.position) > 20)
+        {
+            gameObject.GetComponent<AlienController>().UpdateState(1);
+        }
     }
 
     private void AlienStats()
     {
-        myNavMesh.speed = 7;
-        myNavMesh.acceleration = 10;
+        agent.speed = 6;
+        agent.acceleration = 10;
     }
 
-    private void Move()
-    {
 
-        myNavMesh.SetDestination(player.transform.position);
 
-        if (Vector3.Distance(gameObject.transform.position, player.transform.position) > lostDist)
-        {
-            GameObject.FindGameObjectWithTag("GameController").GetComponent<AlienController>().UpdateState(1);
-        }
-    }
-
-    private void Update()
+    void Update()
     {
         Move();
 
+        CheckDistance();
+        
     }
 }

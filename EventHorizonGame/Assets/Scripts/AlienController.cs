@@ -4,26 +4,26 @@ using UnityEngine;
 
 public class AlienController : MonoBehaviour
 {
-    
-    private bool chase = false;
-    private bool patrol = false;
-    private bool stunned = false;
-    private bool immune = false;
-    private GameObject alien;
 
+
+    
+    
+    private int defaultState = 1;
+    
 
 
     public void UpdateState(int n)
     {
+        
         switch (n)
         {
             case 1:
-                alien.GetComponent<Patrol>().enabled = true;
-                alien.GetComponent<Chase>().enabled = false;                
+                gameObject.GetComponent<Patrol>().enabled = true;
+                gameObject.GetComponent<Chase>().enabled = false;                
                 break;
-            case 2:
-                alien.GetComponent<Chase>().enabled = true;
-                alien.GetComponent<Patrol>().enabled = false;                
+            case 2:                
+                gameObject.GetComponent<Chase>().enabled = true;
+                gameObject.GetComponent<Patrol>().enabled = false;                
                 break;
             case 3:
                 //alien.GetComponent<Stunned>().enabled = true;
@@ -42,11 +42,20 @@ public class AlienController : MonoBehaviour
 
 
 
-    private void Awake()
+    private void Start()
     {
-        alien = gameObject.GetComponent<GameManager>().alien;        
-
+        
+        UpdateState(defaultState);
     }
+
+
+
+
+
+
+
+
+
 
 
 

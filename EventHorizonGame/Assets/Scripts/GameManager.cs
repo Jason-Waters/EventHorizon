@@ -6,14 +6,16 @@ using UnityEngine.AI;
 public class GameManager : MonoBehaviour
 {
     public GameObject waypoints;
-    public List<Vector3> waypointList;
-    public GameObject alien;
-    public Transform spawnPoint;     
+    public List<Vector3> waypointList;        
     public GameObject controlRoom;
     public GameObject terminal;
+    public GameObject alien;
+    public Transform spawnPoint;
     
 
-    
+
+
+
 
     private void Awake()
     {
@@ -41,15 +43,6 @@ public class GameManager : MonoBehaviour
         Instantiate(alien, spawnPoint.position, spawnPoint.rotation);
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-       // SpawnAlien();
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }

@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6951718089265249450}
   - component: {fileID: 6951718089265249449}
-  - component: {fileID: 6951718089265249451}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameController
@@ -54,17 +53,5 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
-  alien: {fileID: 0}
-  spawnPoint: {fileID: 0}
---- !u!114 &6951718089265249451
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6951718089265249448}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 128682b2be3e0a04a89dcf34b4cd373f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  controlRoom: {fileID: 0}
+  terminal: {fileID: 0}

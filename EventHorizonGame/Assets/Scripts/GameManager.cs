@@ -8,8 +8,7 @@ public class GameManager : MonoBehaviour
     public GameObject waypoints;
     public List<Vector3> waypointList;
     public GameObject alien;
-    public Transform spawnPoint;
-    private Collider cardTrigger;    
+    public Transform spawnPoint;     
     public GameObject controlRoom;
     public GameObject terminal;
     

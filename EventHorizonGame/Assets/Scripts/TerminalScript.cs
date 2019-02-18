@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TerminalScript : MonoBehaviour
 {
-    private bool inTrigger;
+    private bool inTrigger = false;
     private GameObject[] terminalDoor;
     public bool gotKey = false;
     private GameObject[] escapeDoor;
@@ -19,7 +19,40 @@ public class TerminalScript : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            
             inTrigger = true;
+            Debug.Log(inTrigger);
+           
+
+        }
+    }
+
+
+    private void OpenDoor()
+    {
+        if(inTrigger == true)
+        {
+            if (Input.GetButtonDown("Interact"))
+            {
+                for (int i = 0; i < terminalDoor.Length; i++)
+                {
+                    terminalDoor[i].GetComponent<Collider>().enabled = true;
+                }
+
+
+            }
+
+            if (gotKey == true && Input.GetButtonDown("Interact"))
+            {
+
+                for (int i = 0; i < escapeDoor.Length; i++)
+                {
+                    escapeDoor[i].GetComponent<Collider>().enabled = true;
+                }
+
+
+            }
+
         }
     }
 
@@ -28,6 +61,7 @@ public class TerminalScript : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             inTrigger = false;
+            Debug.Log(inTrigger);
         }
     }
 
@@ -37,26 +71,10 @@ public class TerminalScript : MonoBehaviour
     void Update()
     {
 
-        if (inTrigger = true && Input.GetButtonDown("Interact"))
-        {
-            for(int i = 0;i < terminalDoor.Length; i++)
-            {
-                terminalDoor[i].GetComponent<Collider>().enabled = true;
-            }
-            
+        OpenDoor();
 
-        }
 
-        if (inTrigger == true && gotKey == true && Input.GetButtonDown("Interact"))
-        {
-
-            for(int i = 0;i < escapeDoor.Length; i++)
-            {
-                escapeDoor[i].GetComponent<Collider>().enabled = true;
-            }
-        
-
-        }
+ 
 
 
 

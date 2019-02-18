@@ -11,14 +11,22 @@ public class Gun : MonoBehaviour
     public ParticleSystem muzzleFlash;
     public GameObject impactEffect;
     public Camera fpsCam;
+    public Transform gunEnd;
     public float fireRate = 2f;
 
     private float nextTimeToFire = 0f;
+    private LineRenderer laserLine;
+    private AudioSource gunAudio;
+    
 
     // Start is called before the first frame update
     void Start()
     {
+        laserLine = gameObject.GetComponent<LineRenderer>();
         
+        gunAudio = gameObject.GetComponent<AudioSource>();
+        
+
     }
 
     // Update is called once per frame
@@ -32,17 +40,34 @@ public class Gun : MonoBehaviour
         }
     }
 
+    private void CreateWeaponTracer(Vector3 fromPosition,Vector3 targetPosition)
+    {
+        Vector3 dir = (targetPosition - fromPosition).normalized;
+        
+    }
+
+    private IEnumerator ShotEffect()
+    {
+        gunAudio.Play();
+        laserLine.enabled = true;
+        yield return new WaitForSeconds(.02f);
+        laserLine.enabled = false;
+
+    }
+
 
     private void Shoot()
     {
         muzzleFlash.Play();
         RaycastHit hit;
+        laserLine.SetPosition(0, gunEnd.position);
 
-        
-        
-        if(Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range,targetLayer))
+
+        if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range,targetLayer))
         {
-            
+            muzzleFlash.Play();
+            StartCoroutine(ShotEffect());
+            laserLine.SetPosition(1, hit.point);
             Stunned alien = hit.transform.GetComponent<Stunned>();
             if(alien != null)
             {
@@ -54,6 +79,10 @@ public class Gun : MonoBehaviour
 
         }else if(Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range, obstacleLayer))
         {
+            muzzleFlash.Play();
+            StartCoroutine(ShotEffect());
+            laserLine.SetPosition(1, hit.point);
+
             GameObject impactGO = Instantiate(impactEffect, hit.point, Quaternion.LookRotation(hit.normal));
             Destroy(impactGO, 1f);
         }

@@ -78,7 +78,7 @@ public class EnemySight : MonoBehaviour
         {
             if (hit.collider.CompareTag("Player"))
             {
-                Debug.Log("hit player");
+                
                 gameObject.GetComponent<AlienController>().UpdateState(setState);
             }
         }
@@ -87,7 +87,7 @@ public class EnemySight : MonoBehaviour
         {
             if (hit.collider.CompareTag("Player"))
             {
-                Debug.Log("hit player");
+                
                 gameObject.GetComponent<AlienController>().UpdateState(setState);
             }
         }
@@ -96,7 +96,7 @@ public class EnemySight : MonoBehaviour
         {
             if (hit.collider.CompareTag("Player"))
             {
-                Debug.Log("hit player");
+                
                 gameObject.GetComponent<AlienController>().UpdateState(setState);
             }
         }
@@ -105,7 +105,7 @@ public class EnemySight : MonoBehaviour
         {
             if (hit.collider.CompareTag("Player"))
             {
-                Debug.Log("hit player");
+                
                 gameObject.GetComponent<AlienController>().UpdateState(setState);
             }
         }
@@ -114,7 +114,7 @@ public class EnemySight : MonoBehaviour
         {
             if (hit.collider.CompareTag("Player"))
             {
-                Debug.Log("hit player");
+                
                 gameObject.GetComponent<AlienController>().UpdateState(setState);
             }
         }
@@ -123,7 +123,7 @@ public class EnemySight : MonoBehaviour
         {
             if (hit.collider.CompareTag("Player"))
             {
-                Debug.Log("hit player");
+                
                 gameObject.GetComponent<AlienController>().UpdateState(setState);
             }
         }
@@ -132,7 +132,7 @@ public class EnemySight : MonoBehaviour
         {
             if (hit.collider.CompareTag("Player"))
             {
-                Debug.Log("hit player");
+                
                 gameObject.GetComponent<AlienController>().UpdateState(setState);
             }
         }
@@ -148,7 +148,7 @@ public class EnemySight : MonoBehaviour
         {
             if (hit.collider.CompareTag("Player"))
             {
-                Debug.Log("hit player");
+                
                 gameObject.GetComponent<AlienController>().UpdateState(setState);
             }
         }
@@ -157,7 +157,7 @@ public class EnemySight : MonoBehaviour
         {
             if (hit.collider.CompareTag("Player"))
             {
-                Debug.Log("hit player");
+                
                 gameObject.GetComponent<AlienController>().UpdateState(setState);
             }
         }
@@ -166,7 +166,7 @@ public class EnemySight : MonoBehaviour
         {
             if (hit.collider.CompareTag("Player"))
             {
-                Debug.Log("hit player");
+                
                 gameObject.GetComponent<AlienController>().UpdateState(setState);
             }
         }
@@ -175,7 +175,7 @@ public class EnemySight : MonoBehaviour
         {
             if (hit.collider.CompareTag("Player"))
             {
-                Debug.Log("hit player");
+                
                 gameObject.GetComponent<AlienController>().UpdateState(setState);
             }
         }
@@ -184,7 +184,7 @@ public class EnemySight : MonoBehaviour
         {
             if (hit.collider.CompareTag("Player"))
             {
-                Debug.Log("hit player");
+                
                 gameObject.GetComponent<AlienController>().UpdateState(setState);
             }
         }
@@ -193,7 +193,7 @@ public class EnemySight : MonoBehaviour
         {
             if (hit.collider.CompareTag("Player"))
             {
-                Debug.Log("hit player");
+                
                 gameObject.GetComponent<AlienController>().UpdateState(setState);
             }
         }
@@ -202,7 +202,7 @@ public class EnemySight : MonoBehaviour
         {
             if (hit.collider.CompareTag("Player"))
             {
-                Debug.Log("hit player");
+                
                 gameObject.GetComponent<AlienController>().UpdateState(setState);
             }
         }
@@ -220,7 +220,7 @@ public class EnemySight : MonoBehaviour
         {
             if (hit.collider.CompareTag("Player"))
             {
-                Debug.Log("hit player");
+                
                 gameObject.GetComponent<AlienController>().UpdateState(setState);
             }
         }
@@ -229,7 +229,7 @@ public class EnemySight : MonoBehaviour
         {
             if (hit.collider.CompareTag("Player"))
             {
-                Debug.Log("hit player");
+                
                 gameObject.GetComponent<AlienController>().UpdateState(setState);
             }
         }
@@ -238,7 +238,7 @@ public class EnemySight : MonoBehaviour
         {
             if (hit.collider.CompareTag("Player"))
             {
-                Debug.Log("hit player");
+                
                 gameObject.GetComponent<AlienController>().UpdateState(setState);
             }
         }
@@ -247,7 +247,7 @@ public class EnemySight : MonoBehaviour
         {
             if (hit.collider.CompareTag("Player"))
             {
-                Debug.Log("hit player");
+                
                 gameObject.GetComponent<AlienController>().UpdateState(setState);
             }
         }
@@ -256,7 +256,7 @@ public class EnemySight : MonoBehaviour
         {
             if (hit.collider.CompareTag("Player"))
             {
-                Debug.Log("hit player");
+                
                 gameObject.GetComponent<AlienController>().UpdateState(setState);
             }
         }
@@ -265,7 +265,7 @@ public class EnemySight : MonoBehaviour
         {
             if (hit.collider.CompareTag("Player"))
             {
-                Debug.Log("hit player");
+                
                 gameObject.GetComponent<AlienController>().UpdateState(setState);
             }
         }
@@ -274,7 +274,7 @@ public class EnemySight : MonoBehaviour
         {
             if (hit.collider.CompareTag("Player"))
             {
-                Debug.Log("hit player");
+                
                 gameObject.GetComponent<AlienController>().UpdateState(setState);
             }
         }
@@ -290,7 +290,7 @@ public class EnemySight : MonoBehaviour
         {
             if (hit.collider.CompareTag("Player"))
             {
-                Debug.Log("hit player");
+                
                 gameObject.GetComponent<AlienController>().UpdateState(setState);
             }
         }
@@ -299,7 +299,7 @@ public class EnemySight : MonoBehaviour
         {
             if (hit.collider.CompareTag("Player"))
             {
-                Debug.Log("hit player");
+                
                 gameObject.GetComponent<AlienController>().UpdateState(setState);
             }
         }
@@ -308,7 +308,7 @@ public class EnemySight : MonoBehaviour
         {
             if (hit.collider.CompareTag("Player"))
             {
-                Debug.Log("hit player");
+                
                 gameObject.GetComponent<AlienController>().UpdateState(setState);
             }
         }
@@ -317,7 +317,7 @@ public class EnemySight : MonoBehaviour
         {
             if (hit.collider.CompareTag("Player"))
             {
-                Debug.Log("hit player");
+                
                 gameObject.GetComponent<AlienController>().UpdateState(setState);
             }
         }
@@ -326,7 +326,7 @@ public class EnemySight : MonoBehaviour
         {
             if (hit.collider.CompareTag("Player"))
             {
-                Debug.Log("hit player");
+                
                 gameObject.GetComponent<AlienController>().UpdateState(setState);
             }
         }
@@ -335,7 +335,7 @@ public class EnemySight : MonoBehaviour
         {
             if (hit.collider.CompareTag("Player"))
             {
-                Debug.Log("hit player");
+                
                 gameObject.GetComponent<AlienController>().UpdateState(setState);
             }
         }
@@ -344,7 +344,7 @@ public class EnemySight : MonoBehaviour
         {
             if (hit.collider.CompareTag("Player"))
             {
-                Debug.Log("hit player");
+                
                 gameObject.GetComponent<AlienController>().UpdateState(setState);
             }
         }

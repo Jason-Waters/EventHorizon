@@ -26,10 +26,8 @@ public class AlienController : MonoBehaviour
                 gameObject.GetComponent<Patrol>().enabled = false;                
                 break;
             case 3:
-                //alien.GetComponent<Stunned>().enabled = true;
-                break;
-            case 4:
-                //alien.GetComponent<Immune>().enabled = true;
+                Debug.Log("Updating to Immune state");
+                gameObject.GetComponent<Immune>().enabled = true;
                 break;
             default:
                 break;

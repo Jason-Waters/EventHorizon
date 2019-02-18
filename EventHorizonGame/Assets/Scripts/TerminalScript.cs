@@ -8,11 +8,14 @@ public class TerminalScript : MonoBehaviour
     private GameObject[] terminalDoor;
     public bool gotKey = false;
     private GameObject[] escapeDoor;
+    private int count = 0;
+    private GameObject g_manager;
     // Start is called before the first frame update
     void Start()
     {
         terminalDoor = GameObject.FindGameObjectsWithTag("TerminalDoor");
         escapeDoor = GameObject.FindGameObjectsWithTag("EscapeDoor");
+        g_manager = GameObject.FindGameObjectWithTag("GameController");
     }
 
     private void OnTriggerEnter(Collider other)
@@ -21,7 +24,7 @@ public class TerminalScript : MonoBehaviour
         {
             
             inTrigger = true;
-            Debug.Log(inTrigger);
+            
            
 
         }
@@ -37,6 +40,12 @@ public class TerminalScript : MonoBehaviour
                 for (int i = 0; i < terminalDoor.Length; i++)
                 {
                     terminalDoor[i].GetComponent<Collider>().enabled = true;
+                    if(count == 0)
+                    {
+                        g_manager.GetComponent<GameManager>().SpawnAlien();
+                        count++;
+                    }
+
                 }
 
 
@@ -61,7 +70,7 @@ public class TerminalScript : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             inTrigger = false;
-            Debug.Log(inTrigger);
+            
         }
     }
 

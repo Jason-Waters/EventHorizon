@@ -5,45 +5,86 @@ using UnityEngine.AI;
 
 public class Chase : MonoBehaviour
 {
+    private bool sawEnemy;
+    private NavMeshAgent agent;
     private GameObject player;
-    private NavMeshAgent myNavMesh;
-    AlienController state;
-    public float lostDist = 15f;
-
-    private void Awake()
-    {
-        myNavMesh = gameObject.GetComponent<NavMeshAgent>();
-        player = GameObject.FindWithTag("Player");
-    }
-
+    private GameObject g_manager;
+    private bool traversingLink;
+    private OffMeshLinkData currentLink;
+    // Start is called before the first frame update
     void Start()
     {
+        g_manager = GameObject.FindGameObjectWithTag("GameController");
+        agent = gameObject.GetComponent<NavMeshAgent>();
+        player = GameObject.FindGameObjectWithTag("Player");
+        sawEnemy = true;
+
         AlienStats();
+    }
 
-        Move();
 
+    private void Move()
+    {
+        if (sawEnemy == true) {
+            agent.SetDestination(player.transform.position);
+        }
+    }
+    
+
+    private void CheckDistance()
+    {
+        if (Vector3.Distance(agent.transform.position, player.transform.position) > 20)
+        {
+            gameObject.GetComponent<AlienController>().UpdateState(1);
+        }
     }
 
     private void AlienStats()
     {
-        myNavMesh.speed = 7;
-        myNavMesh.acceleration = 10;
+        agent.speed = 8;
+        agent.acceleration = 10;
     }
-
-    private void Move()
+    private void OffMesh()
     {
-
-        myNavMesh.SetDestination(player.transform.position);
-
-        if (Vector3.Distance(gameObject.transform.position, player.transform.position) > lostDist)
+        if (!traversingLink)
         {
-            GameObject.FindGameObjectWithTag("GameController").GetComponent<AlienController>().UpdateState(1);
+            Debug.Log("Inside OffMeshLink");
+
+            currentLink = agent.currentOffMeshLinkData;
+            traversingLink = true;
+
+        }
+
+
+
+        Vector3 endPos = new Vector3(currentLink.endPos.x, agent.transform.position.y, currentLink.endPos.z);
+
+        var endRotation = Quaternion.LookRotation(endPos - transform.position);
+        transform.rotation = Quaternion.Slerp(transform.rotation, endRotation, (agent.speed * 2) * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(agent.transform.position, endPos, (agent.speed / 1.5f) * Time.deltaTime);
+
+
+        if (agent.transform.position == endPos)
+        {
+            traversingLink = false;
+            agent.CompleteOffMeshLink();
+            agent.isStopped = false;
         }
     }
 
-    private void Update()
+
+
+    void Update()
     {
         Move();
 
+        if (agent.isOnOffMeshLink)
+        {
+            
+            OffMesh();
+        }
+
+        CheckDistance();
+        
     }
 }

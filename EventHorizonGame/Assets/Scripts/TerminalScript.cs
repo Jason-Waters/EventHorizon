@@ -37,6 +37,7 @@ public class TerminalScript : MonoBehaviour
         {
             if (Input.GetButtonDown("Interact"))
             {
+                gameObject.GetComponent<AudioSource>().Play();
                 for (int i = 0; i < terminalDoor.Length; i++)
                 {
                     terminalDoor[i].GetComponent<Collider>().enabled = true;
@@ -53,7 +54,7 @@ public class TerminalScript : MonoBehaviour
 
             if (gotKey == true && Input.GetButtonDown("Interact"))
             {
-
+                gameObject.GetComponent<AudioSource>().Play();
                 for (int i = 0; i < escapeDoor.Length; i++)
                 {
                     escapeDoor[i].GetComponent<Collider>().enabled = true;

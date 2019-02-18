@@ -17,11 +17,7 @@ public class Patrol : MonoBehaviour
     {
         g_manager = GameObject.FindGameObjectWithTag("GameController");
         waypoints = g_manager.GetComponent<GameManager>().waypointList;
-        Debug.Log(waypoints.Capacity);
-        for(int i = 0; i < waypoints.Capacity; i++)
-        {
-            Debug.Log(waypoints[i]);
-        }
+         
 
         navMesh = gameObject.GetComponent<NavMeshAgent>();
         navMesh.SetDestination(waypoints[currentWP]);
@@ -31,7 +27,7 @@ public class Patrol : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(currentWP);
+        
         if(navMesh.remainingDistance == 0 && !navMesh.pathPending)
         {
             currentWP++;
@@ -63,7 +59,7 @@ public class Patrol : MonoBehaviour
         Vector3 endPos = new Vector3(currentLink.endPos.x, navMesh.transform.position.y, currentLink.endPos.z);
 
         var endRotation = Quaternion.LookRotation(endPos - transform.position);
-        transform.rotation = Quaternion.Slerp(transform.rotation, endRotation, (navMesh.speed / 1.5f) * Time.deltaTime);
+        transform.rotation = Quaternion.Slerp(transform.rotation, endRotation, (navMesh.speed) * Time.deltaTime);
         transform.position = Vector3.MoveTowards(navMesh.transform.position, endPos, (navMesh.speed /1.5f) * Time.deltaTime);
         
         

@@ -4,15 +4,39 @@ using UnityEngine;
 
 public class CardScript : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+
+    private GameObject g_manager;
+    private bool gotCard = false;
+    private bool inTrigger;
+    private void Start()
+    {
+        g_manager = GameObject.FindGameObjectWithTag("GameController");
+    }
+    private void OnTriggerEnter(Collider other)
     {
         
+        if (other.CompareTag("Player"))
+        {
+            inTrigger = true;
+            Debug.Log("Intrigger");
+
+            
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        if (Input.GetButtonDown("Interact") && inTrigger)
+        {
+            Debug.Log("pressing button");
+            gotCard = true;
+            g_manager.GetComponent<GameManager>().TurnOnNavMesh(gotCard);
+            Destroy(gameObject);
+
+        }
     }
+
+
+
+
 }

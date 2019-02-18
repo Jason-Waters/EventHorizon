@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Alien
   - TerminalRoom
+  - TerminalDoor
+  - EscapeDoor
   layers:
   - Default
   - TransparentFX

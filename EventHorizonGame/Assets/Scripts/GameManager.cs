@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public Transform spawnPoint;
     private Collider cardTrigger;    
     public GameObject controlRoom;
+    public GameObject terminal;
     
 
     
@@ -27,18 +28,24 @@ public class GameManager : MonoBehaviour
 
 
     
-    private void TurnOnNavMesh(bool gotCard)
+    public void TurnOnNavMesh(bool gotCard)
     {
         if (gotCard)
         {
             controlRoom.GetComponent<NavMeshObstacle>().enabled = false;
+            terminal.GetComponent<TerminalScript>().gotKey = true;
         }
+    }
+
+    public void SpawnAlien()
+    {
+        Instantiate(alien, spawnPoint.position, spawnPoint.rotation);
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        
+       // SpawnAlien();
     }
 
     // Update is called once per frame

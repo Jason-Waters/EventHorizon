@@ -87,6 +87,7 @@ public class TerminalScript : MonoBehaviour
                         objectives.transform.GetChild(1).gameObject.SetActive(true);
                         g_manager.GetComponent<GameManager>().SpawnAlien();
                         count++;
+                        g_manager.GetComponent<GameManager>().CheckSound();
                     }
 
                 }

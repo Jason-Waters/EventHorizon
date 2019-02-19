@@ -11,7 +11,10 @@ public class GameManager : MonoBehaviour
     public GameObject terminal;
     public GameObject alien;
     public Transform spawnPoint;
-    
+    public AudioClip startingMusic;
+    public AudioClip alienMusic;
+    private AudioSource gm_audio;
+    private bool musicChanged;
 
 
 
@@ -25,6 +28,19 @@ public class GameManager : MonoBehaviour
         {
             waypointList[i] = waypoints.transform.GetChild(i).transform.position;
         }
+        gm_audio = gameObject.GetComponent<AudioSource>();
+
+    }
+
+    public void CheckSound()
+    {
+        if (gm_audio.isPlaying && terminal.GetComponent<TerminalScript>().count >= 1 && musicChanged == false)
+        {
+            gm_audio.clip = alienMusic;
+            musicChanged = true;
+            gm_audio.Play();
+        }
+
     }
 
 

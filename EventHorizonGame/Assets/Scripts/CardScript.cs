@@ -9,6 +9,9 @@ public class CardScript : MonoBehaviour
     private bool gotCard = false;
     private bool inTrigger;
     public GameObject interactText;
+    public GameObject cardPicture;
+    public GameObject objectives;
+
     private void Start()
     {
         g_manager = GameObject.FindGameObjectWithTag("GameController");
@@ -32,6 +35,9 @@ public class CardScript : MonoBehaviour
             interactText.SetActive(false);            
             gotCard = true;
             g_manager.GetComponent<GameManager>().TurnOnNavMesh(gotCard);
+            cardPicture.SetActive(true);
+            objectives.transform.GetChild(1).gameObject.SetActive(false);
+            objectives.transform.GetChild(2).gameObject.SetActive(true);
             Destroy(gameObject);
 
         }

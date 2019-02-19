@@ -9,10 +9,18 @@ public class TerminalScript : MonoBehaviour
     private GameObject[] terminalDoor;
     public bool gotKey = false;
     private GameObject[] escapeDoor;
-    private int count = 0;
+    public int count = 0;
     private GameObject g_manager;
     public GameObject interactText;
     public GameObject keyWarningText;
+    public GameObject objectives;
+
+    public float shakeMagnitude = 0.05f;
+    public float shakeTime = .5f;
+    public Camera mainCamera;
+    private Vector3 cameraInitialPosition;
+    
+
 
     // Start is called before the first frame update
     void Start()
@@ -35,6 +43,25 @@ public class TerminalScript : MonoBehaviour
     }
 
 
+    void StartCameraShaking()
+    {
+        float cameraShakingOffsetX = Random.value * shakeMagnitude * 2 - shakeMagnitude;
+        float cameraShakingOffsetY = Random.value * shakeMagnitude * 2 - shakeMagnitude;
+        Vector3 cameraIntermediatePosition = mainCamera.transform.position;
+        cameraIntermediatePosition.x += cameraShakingOffsetX;
+        cameraIntermediatePosition.y += cameraShakingOffsetY;
+        mainCamera.transform.position = cameraIntermediatePosition;
+    }
+
+    void StopCameraShaking()
+    {
+        CancelInvoke("StartCameraShaking");
+        mainCamera.transform.position = cameraInitialPosition;
+
+
+    }
+
+
     private void OpenDoor()
     {
         if(inTrigger == true)
@@ -42,6 +69,8 @@ public class TerminalScript : MonoBehaviour
             interactText.SetActive(true);
             if (Input.GetButtonDown("Interact") && count < 1)
             {
+                
+
                 interactText.SetActive(false);
                 gameObject.GetComponent<AudioSource>().Play();
                 for (int i = 0; i < terminalDoor.Length; i++)
@@ -49,6 +78,13 @@ public class TerminalScript : MonoBehaviour
                     terminalDoor[i].GetComponent<Collider>().enabled = true;
                     if(count == 0)
                     {
+
+                        cameraInitialPosition = mainCamera.transform.position;
+                        InvokeRepeating("StartCameraShaking", 0f, .005f);
+                        Invoke("StopCameraShaking", shakeTime);
+
+                        objectives.transform.GetChild(0).gameObject.SetActive(false);
+                        objectives.transform.GetChild(1).gameObject.SetActive(true);
                         g_manager.GetComponent<GameManager>().SpawnAlien();
                         count++;
                     }
@@ -67,9 +103,12 @@ public class TerminalScript : MonoBehaviour
                 {
                     escapeDoor[i].GetComponent<Collider>().enabled = true;
                 }
+                objectives.transform.GetChild(2).gameObject.SetActive(false);
+                objectives.transform.GetChild(3).gameObject.SetActive(true);
 
 
-            }else if(gotKey == false && Input.GetButtonDown("Interact"))
+            }
+            else if(gotKey == false && Input.GetButtonDown("Interact"))
             {
                 interactText.SetActive(false);
                 keyWarningText.SetActive(true);

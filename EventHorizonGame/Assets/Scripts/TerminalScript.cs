@@ -12,6 +12,7 @@ public class TerminalScript : MonoBehaviour
     private int count = 0;
     private GameObject g_manager;
     public GameObject interactText;
+    public GameObject keyWarningText;
 
     // Start is called before the first frame update
     void Start()
@@ -39,7 +40,7 @@ public class TerminalScript : MonoBehaviour
         if(inTrigger == true)
         {
             interactText.SetActive(true);
-            if (Input.GetButtonDown("Interact"))
+            if (Input.GetButtonDown("Interact") && count < 1)
             {
                 interactText.SetActive(false);
                 gameObject.GetComponent<AudioSource>().Play();
@@ -60,6 +61,7 @@ public class TerminalScript : MonoBehaviour
             if (gotKey == true && Input.GetButtonDown("Interact"))
             {
                 interactText.SetActive(false);
+                keyWarningText.SetActive(false);
                 gameObject.GetComponent<AudioSource>().Play();
                 for (int i = 0; i < escapeDoor.Length; i++)
                 {
@@ -67,6 +69,10 @@ public class TerminalScript : MonoBehaviour
                 }
 
 
+            }else if(gotKey == false && Input.GetButtonDown("Interact"))
+            {
+                interactText.SetActive(false);
+                keyWarningText.SetActive(true);
             }
 
         }
@@ -77,6 +83,7 @@ public class TerminalScript : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             interactText.SetActive(false);
+            keyWarningText.SetActive(false);
             inTrigger = false;
             
         }

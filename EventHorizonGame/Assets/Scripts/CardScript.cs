@@ -20,7 +20,7 @@ public class CardScript : MonoBehaviour
         {
             inTrigger = true;
             Debug.Log("Intrigger");
-
+            interactText.SetActive(true);
             
         }
     }
@@ -29,7 +29,7 @@ public class CardScript : MonoBehaviour
     {
         if (Input.GetButtonDown("Interact") && inTrigger)
         {
-            Debug.Log("pressing button");
+            interactText.SetActive(false);            
             gotCard = true;
             g_manager.GetComponent<GameManager>().TurnOnNavMesh(gotCard);
             Destroy(gameObject);

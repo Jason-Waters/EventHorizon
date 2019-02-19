@@ -10,6 +10,8 @@ public class WinScript : MonoBehaviour
     public Animator animator;
     public GameObject winImage;
     private int levelToLoad;
+    public Image fadeScreen;
+            
 
     private void OnTriggerEnter(Collider other)
     {
@@ -17,21 +19,28 @@ public class WinScript : MonoBehaviour
         {
             winImage.SetActive(true);
             gameObject.GetComponent<AudioSource>().Play();
-            StartCoroutine("AudioLength");
+            StartCoroutine(AudioLength());
         }
     }
 
     IEnumerator AudioLength()
     {
-        yield return new WaitForSeconds(gameObject.GetComponent<AudioSource>().clip.length);
+        yield return new WaitForSeconds(gameObject.GetComponent<AudioSource>().clip.length * 2);
         FadeToLevel(3);
     }
- 
+
+    IEnumerator ClipLength()
+    {
+
+        yield return new WaitForSeconds(2f);
+        OnFadeComplete();
+    }
 
     public void FadeToLevel(int levelIndex)
     {
         levelToLoad = levelIndex;
         animator.SetTrigger("FadeOut");
+        StartCoroutine(ClipLength());
     }
 
     public void OnFadeComplete()

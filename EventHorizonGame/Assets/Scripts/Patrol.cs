@@ -28,8 +28,8 @@ public class Patrol : MonoBehaviour
 
     private void AlienStats()
     {
-        navMesh.speed = 4;
-        navMesh.acceleration = 7;
+        navMesh.speed = 8;
+        navMesh.acceleration = 14;
     }
 
     // Update is called once per frame
@@ -68,7 +68,7 @@ public class Patrol : MonoBehaviour
 
         var endRotation = Quaternion.LookRotation(endPos - transform.position);
         transform.rotation = Quaternion.Slerp(transform.rotation, endRotation, (navMesh.speed * 2) * Time.deltaTime);
-        transform.position = Vector3.MoveTowards(navMesh.transform.position, endPos, (navMesh.speed /1.5f) * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(navMesh.transform.position, endPos, (navMesh.speed /2f) * Time.deltaTime);
         
         
         if (navMesh.transform.position == endPos)

@@ -41,8 +41,8 @@ public class Chase : MonoBehaviour
 
     private void AlienStats()
     {
-        agent.speed = 8;
-        agent.acceleration = 10;
+        agent.speed = 10;
+        agent.acceleration = 15;
     }
     private void OffMesh()
     {

@@ -110,7 +110,7 @@ public class TerminalScript : MonoBehaviour
             }
             else if(gotKey == false && Input.GetButtonDown("Interact"))
             {
-                interactText.SetActive(false);
+                interactText.SetActive(false);                
                 keyWarningText.SetActive(true);
             }
 

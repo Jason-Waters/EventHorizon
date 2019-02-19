@@ -33,6 +33,7 @@ public class WinScript : MonoBehaviour
     {
 
         yield return new WaitForSeconds(2f);
+        
         OnFadeComplete();
     }
 

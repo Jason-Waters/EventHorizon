@@ -174,6 +174,7 @@ GameObject:
   - component: {fileID: 859298499923058149}
   - component: {fileID: 3189599491458806595}
   - component: {fileID: 1270721920834167531}
+  - component: {fileID: 7192814534646747012}
   m_Layer: 10
   m_Name: Alien 2
   m_TagString: Alien
@@ -340,14 +341,14 @@ AudioSource:
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 25
+  MinDistance: 16.49
+  MaxDistance: 32.43
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -434,6 +435,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1845a45103bcca14eae6168d979886ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7192814534646747012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1086502047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 503fbe76683bbca438bb163e68a72c1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nearSound: {fileID: 8300000, guid: 05feb69104405d94c8f3186a33e5e3bd, type: 3}
+  farSound: {fileID: 8300000, guid: 286b208804115274b98cf28270777a67, type: 3}
+  nearChaseSound: {fileID: 8300000, guid: 652435a7c197ba646a800e762d389064, type: 3}
+  farChaseSound: {fileID: 8300000, guid: 9e6a710aa7c7ad149963f4b5de4c85e5, type: 3}
+  alienSound: {fileID: 3189599491458806595}
 --- !u!1 &1108082921
 GameObject:
   m_ObjectHideFlags: 0

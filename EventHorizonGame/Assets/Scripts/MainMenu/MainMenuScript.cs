@@ -23,7 +23,7 @@ public class MainMenuScript : MonoBehaviour
 
     public void Credits()
     {
-
+        SceneManager.LoadScene(3);
     }
 
     public void Retry()

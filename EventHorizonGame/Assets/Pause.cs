@@ -26,6 +26,14 @@ public class Pause : MonoBehaviour
             }
         }
     }
+
+    public void RestartGame()
+    {
+        isPaused = false;
+        Time.timeScale = 1f;        
+        SceneManager.LoadScene(1);
+    }
+
     public void QuitGame()
     {
         Application.Quit();

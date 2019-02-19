@@ -35,7 +35,10 @@ public class Gun : MonoBehaviour
         if (Input.GetButtonDown("Fire1") && Time.time >= nextTimeToFire)
         {
             nextTimeToFire = Time.time + 1f / fireRate;
-            Shoot();
+            if (Time.timeScale == 1)
+            {
+                Shoot();
+            }
 
         }
     }
@@ -58,6 +61,7 @@ public class Gun : MonoBehaviour
 
     private void Shoot()
     {
+
         muzzleFlash.Play();
         RaycastHit hit;
         laserLine.SetPosition(0, gunEnd.position);
